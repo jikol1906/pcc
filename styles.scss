@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: hsl(185, 75%, 39%);
+  --color-dark: hsl(229, 23%, 23%);
+  --color-dark-second: hsl(227, 10%, 46%);
+  --color-light-gray: rgb(220, 220, 220);
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Kumbh Sans', sans-serif;
+
+  @media only screen and (max-width: 400px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  --circle-size: 70vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+  position: relative;
+
+  @media only screen and (max-width:900px) {
+    --circle-size:80vw;
+  }
+
+  @media only screen and (max-width:500px) {
+    --circle-size:100vw;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-size: cover;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    z-index: 0;
+  }
+
+  &::before {
+    background-image: url('images/bg-pattern-top.svg');
+    top: -45vw;
+    left: -20vw;
+  }
+
+  &::after {
+    background-image: url('images/bg-pattern-bottom.svg');
+    bottom: -45vw;
+    right: -20vw;
+  }
+
+}
+
+main {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 2rem;
+  background-color: #f4f4f4;
+  box-shadow: 8px 11px 29px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 13rem;
+    width: 100%;
+    z-index: 0;
+    background: url('images/bg-pattern-card.svg');
+    background-size: cover;
+  }
+
+  &__img {
+    border-radius: 50%;
+    border: 5px solid white;
+    z-index: 1;
+    width: 10rem;
+  }
+
+  &__header {
+    padding: 8rem 10rem;
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 2px solid var(--color-light-gray);
+  }
+
+  &__heading {
+    margin: 2rem 0;
+
+    span {
+      color: var(--color-dark-second);
+    }
+  }
+
+  &__subheading {
+    color: var(--color-dark-second);
+  }
+
+  &__stats {
+    padding: 1.5rem;
+    display: flex;
+  }
+
+  &__stat-container {
+    flex: 1;
+
+    h4 {
+      margin: 1rem 0;
+    }
+
+    p {
+      color: var(--color-dark-second);
+    }
+  }
+}
